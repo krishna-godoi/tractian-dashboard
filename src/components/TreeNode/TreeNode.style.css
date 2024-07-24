@@ -1,0 +1,166 @@
+.tree-content {
+	list-style: none;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 0;
+	padding: 8px 12px;
+	font-family: 'Roboto', 'Inter', sans-serif;
+
+	p {
+		margin: 0;
+	}
+
+	&>.leaf {
+		margin-inline-start: 24px;
+	}
+
+	.details-dropdown>.item-content {
+		margin: 4px 0px 0px 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.details-dropdown .leaf {
+		margin: 0px 0px 0px 24px;
+		height: 25px;
+	}
+
+	.details-dropdown {
+		position: relative;
+
+		.summary {
+			height: 25px;
+		}
+
+		&::before {
+			content: "";
+			position: absolute;
+			height: calc(100% - 24px);
+			left: 10px;
+			bottom: 0;
+			border-left: 1px solid rgba(0, 0, 0, 0.06);
+		}
+	}
+
+	&.filtered {
+
+		.details-dropdown,
+		.leaf {
+			display: none;
+		}
+
+		.details-dropdown:has(.target),
+		.target,
+		.target .details-dropdown,
+		.target .leaf {
+			display: inline-flex;
+		}
+	}
+
+	.summary {
+		display: flex;
+		align-items: center;
+		gap: 4px;
+
+		&::before {
+			content: "";
+			mask-image: url("../../assets/Down.svg");
+			mask-repeat: no-repeat;
+			mask-size: contain;
+			transform: rotate(-90deg);
+			background-color: #17192D;
+			width: 10px;
+			height: 10px;
+			margin: 5px;
+			cursor: pointer;
+			box-sizing: content-box;
+		}
+
+		.details-dropdown[open]>& {
+			&::before {
+				transform: rotate(0deg);
+			}
+		}
+	}
+
+	.details-dropdown>.summary>span.summary-title,
+	.leaf {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		padding: 0 4px;
+
+		&::before {
+			content: "";
+			background-color: var(--color-primary);
+			mask-repeat: no-repeat;
+			mask-position: center;
+			height: 22px;
+			width: 22px;
+		}
+
+		&.selected {
+			color: white;
+			background-color: var(--color-primary);
+
+			&::before {
+				background-color: #fff;
+			}
+		}
+	}
+
+	.details-dropdown.location>.summary>span.summary-title::before,
+	.leaf.location::before {
+		mask-image: url("../../assets/GoLocation.svg");
+	}
+
+	.details-dropdown.asset>.summary>span.summary-title::before,
+	.leaf.asset::before {
+		mask-image: url("../../assets/IoCubeOutline.svg");
+	}
+
+	.details-dropdown.component>.summary>span.summary-title::before,
+	.leaf.component::before {
+		mask-image: url("../../assets/Codepen.svg");
+	}
+
+	.component {
+		cursor: pointer;
+
+		&::after {
+			content: "";
+			mask-size: contain;
+			mask-position: center;
+			mask-repeat: no-repeat;
+		}
+
+		&.operating::after {
+			background-color: #52c41a;
+		}
+
+		&.alert::after {
+			background-color: #ED3833;
+		}
+
+		&.energy::after {
+			width: 14px;
+			height: 14px;
+			mask-image: url("../../assets/bolt.svg");
+		}
+
+		&.vibration::after {
+			width: 16px;
+			height: 16px;
+			mask-image: url("../../assets/vibration.svg");
+		}
+
+		&:not(.energy):not(.vibration)::after {
+			width: 8px;
+			height: 8px;
+			border-radius: 100vmax;
+		}
+	}
+}
