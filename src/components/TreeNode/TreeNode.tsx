@@ -25,7 +25,7 @@ export const TreeNode: React.FC<{ elem: TreeNodeType, map: AssetMap }> = ({ elem
 			classes += ` selected`
 		}
 
-		return <p id={elem.id} onClick={() => handleComponentClick(elem.id, elem.status)} className={`leaf ${classes}`}>{elem.name}</p>
+		return <button id={elem.id} onClick={() => handleComponentClick(elem.id, elem.status)} className={`leaf ${classes}`}>{elem.name}</button>
 	}
 
 	return (

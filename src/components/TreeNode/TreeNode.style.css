@@ -8,8 +8,12 @@
 	padding: 8px 12px;
 	font-family: 'Roboto', 'Inter', sans-serif;
 
-	p {
+	button {
 		margin: 0;
+		border: none;
+		background-color: transparent;
+		font-size: inherit;
+		font-family: inherit;
 	}
 
 	&>.leaf {

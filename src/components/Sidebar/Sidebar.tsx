@@ -31,7 +31,7 @@ export const Sidebar = () => {
 	}
 
 	return (
-		<dialog open={open} className={`sidebar`}>
+		<dialog tabIndex={-1} open={open} className={`sidebar`}>
 			<aside>
 				<header>
 					<h2 className={`with-icon ${component?.sensorType} ${component?.status}`}>{component?.name}</h2>
