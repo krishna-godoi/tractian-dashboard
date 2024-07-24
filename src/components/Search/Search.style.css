@@ -1,10 +1,12 @@
 .search {
-	position: sticky;
+	margin-block-start: 8px;
 	display: flex;
+	position: relative;
 	align-items: center;
 	top: 0;
 	background-color: white;
-	border-bottom: 1px solid var(--color-lightgray);
+	border: 1px solid var(--color-lightgray);
+	height: 100%;
 
 	input {
 		border: none;

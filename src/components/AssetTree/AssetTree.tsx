@@ -12,8 +12,8 @@ const Assets = () => {
 	const assetArr = useMemo(() => Object.values(assetMap), [assetMap])
 
 	return (
-		<FiltersProvider>
-			<main>
+		<main>
+			<FiltersProvider>
 				<header>
 					<h1>Ativos<span> / {activeCompanyName} Unit</span></h1>
 					<div className='filters'>
@@ -22,25 +22,25 @@ const Assets = () => {
 						<FilterButton id="critical" label="Crítico" />
 					</div>
 				</header>
-				<div className='asset-view'>
-					<div className='search'>
-						<Search />
-					</div>
-					<div id='filter-root' className='tree-content'>
-						{
-							isPending ? "Loading..." : assetArr.map((elem) => {
-								const hasParent = !!(elem.parentId || elem.locationId)
-								if (!hasParent) {
-									return (
-										<TreeNode key={elem.id} elem={elem} map={assetMap} />
-									);
-								}
-							})
-						}
-					</div>
+				<div className='search'>
+					<Search />
 				</div>
-			</main >
-		</FiltersProvider>
+			</FiltersProvider>
+			<div className='asset-view'>
+				<div id='filter-root' className={`tree-content`}>
+					{
+						isPending ? "Loading..." : assetArr.map((elem) => {
+							const hasParent = !!(elem.parentId || elem.locationId)
+							if (!hasParent) {
+								return (
+									<TreeNode key={elem.id} elem={elem} map={assetMap} />
+								);
+							}
+						})
+					}
+				</div>
+			</div>
+		</main >
 	);
 }
 

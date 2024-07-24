@@ -22,7 +22,7 @@ export const FiltersContext = createContext<{
 })
 
 const FiltersProvider = ({ children }: PropsWithChildren) => {
-	const { assetMap } = useContext(AssetsContext)
+	const { assetMap, activeComponent } = useContext(AssetsContext)
 	const [filters, setFilters] = useState<string[]>([])
 	const [search, setSearch] = useState("")
 
@@ -36,7 +36,7 @@ const FiltersProvider = ({ children }: PropsWithChildren) => {
 
 	useEffect(() => {
 		applyNewFilters(assetMap, filters, search);
-	}, [filters, assetMap])
+	}, [filters, assetMap, activeComponent])
 
 	const toggleFilter = (filter: string) => {
 		const isApplied = filters.indexOf(filter) >= 0;

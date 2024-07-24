@@ -11,14 +11,14 @@ export type AssetMap = Record<string, TreeNodeType>;
 function App() {
 	return (
 		<AssetsProvider>
-			<header className='page-header'>
-				<a href="/"><img src={logo} alt='TRACTIAN Logo' /></a>
-				<Navbar />
-			</header>
-			<div className='content' role='tabpanel'>
-				<AssetTree />
-				<Sidebar />
-			</div>
+				<header className='page-header'>
+					<a href="/"><img src={logo} alt='TRACTIAN Logo' /></a>
+					<Navbar />
+				</header>
+				<div className='content' role='tabpanel'>
+					<AssetTree />
+					<Sidebar />
+				</div>
 		</AssetsProvider>
 	)
 }
